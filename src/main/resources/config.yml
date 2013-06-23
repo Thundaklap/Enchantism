@@ -2,133 +2,133 @@ enable-unenchant-button: true
 
 enchantments:
   arrow-damage:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   arrow-fire:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   arrow-infinite:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   arrow-knockback:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   damage-all:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   damage-arthropods:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   damage-undead:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   dig-speed:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   durability:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   fire-aspect:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
   
   knockback:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   loot-bonus-blocks:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   loot-bonus-mobs:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
   
   oxygen:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   protection-environmental:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
   
   protection-explosions:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   protection-fall:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   protection-fire:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
   
   protection-projectile:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   silk-touch:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
     
   thorns:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
   
   water-worker:
-    level1: 1
-    level2: 2
-    level3: 3
-    level4: 4
+    level1: 4
+    level2: 8
+    level3: 12
+    level4: 16
