@@ -36,16 +36,16 @@ public final class EnchantInventory {
     private boolean showUnenchant = false;
     private boolean unenchantEnabled;
 
-    
+
     public EnchantInventory(Player player, Location tableLoc, boolean useBookshelves){
-        
+
         if(useBookshelves){
             int numBookshelves = Utils.getApplicableBookshelves(tableLoc);
             levelToShow = numBookshelves > 15 ? 4 : (numBookshelves / 5) + 1;
         }else{
             levelToShow = 4;
         }
-        
+
         unenchantEnabled = Enchantism.getInstance().configuration.enableUnenchantButton;
         this.player = player;
         this.inventory = Bukkit.createInventory(player, SIZE_INVENTORY, "Enchant");
@@ -69,8 +69,8 @@ public final class EnchantInventory {
         List<Enchantment> applicableEnchantments = Utils.getEnchantments(change);
 
         currentPage = 0;
-        
-        
+
+
         if (applicableEnchantments.isEmpty()) {
             pageCount = 0;
             pages = new EnchantPage[1];
@@ -84,11 +84,11 @@ public final class EnchantInventory {
             int numberOfEnchants = applicableEnchantments.size();
             pageCount = (numberOfEnchants - 1) / ENCHANTMENTS_PER_PAGE;
             pages = new EnchantPage[pageCount + 1];
-            
+
             for (int i = 0; i < pages.length; i++) {
                 pages[i] = new EnchantPage(levelToShow);
             }
-            
+
             int currentlyAddingPage = 0;
 
             for (Enchantment enchant : applicableEnchantments) {
@@ -111,19 +111,15 @@ public final class EnchantInventory {
 
         // Default to cancel, uncancel if we want vanilla behavior
         event.setResult(Result.DENY);
-        
+
         updateTask = Bukkit.getScheduler().runTask(Enchantism.getInstance(), new SlotChangeTask(this, inventory.getItem(SLOT_CURRENT_ITEM)));
-        
+
         // Let people drop items
-        // Raw slot check since border_left, border_right check only works sometimes
-        if(event.getClick() == ClickType.CONTROL_DROP || event.getClick() == ClickType.DROP
-                || event.getClick() == ClickType.WINDOW_BORDER_LEFT || event.getClick() == ClickType.WINDOW_BORDER_RIGHT
-                || event.getRawSlot() == WINDOW_BORDER_RAW_SLOT){
-            
+        if (event.getAction() == InventoryAction.DROP_ALL_CURSOR || event.getAction() == InventoryAction.DROP_ONE_CURSOR) {
             event.setResult(Result.DEFAULT);
             return;
         }
-        
+
         // Let people shift-click in tools
         if (event.getClick() == ClickType.SHIFT_LEFT || event.getClick() == ClickType.SHIFT_RIGHT) {
             if (rawSlot >= SIZE_INVENTORY) {
@@ -180,16 +176,16 @@ public final class EnchantInventory {
 
                 if (item != null && !item.getType().equals(Material.AIR)) {
                     if (item.getType() == Material.ENCHANTED_BOOK) {
-                        
+
                         EnchantmentStorageMeta meta = (EnchantmentStorageMeta)item.getItemMeta();
-                        
+
                         for (Map.Entry<Enchantment, Integer> entry : meta.getStoredEnchants().entrySet()) {
                             meta.removeStoredEnchant(entry.getKey());
                         }
-                        
+
                         item.setItemMeta(meta);
                         item.setType(Material.BOOK);
-                        
+
                     } else {
                         for (Map.Entry<Enchantment, Integer> entry : item.getEnchantments().entrySet()) {
                             item.removeEnchantment(entry.getKey());
@@ -213,9 +209,9 @@ public final class EnchantInventory {
                 player.playSound(player.getLocation(), Sound.ANVIL_BREAK, 2F, 1F);
                 return;
             }
-            
+
             ItemStack item = inventory.getItem(SLOT_CURRENT_ITEM);
-            
+
             for(Map.Entry itemEnchantment : item.getEnchantments().entrySet()){
                 if(enchant.enchant.conflictsWith((Enchantment)itemEnchantment.getKey())){
                     player.sendMessage(ChatColor.RED + "That enchantment would conflict with one of the enchantments already on the tool!");
@@ -230,8 +226,8 @@ public final class EnchantInventory {
 
             if (item.getType() == Material.BOOK) {
                 item.setType(Material.ENCHANTED_BOOK);
-                
-            } 
+
+            }
             if(item.getType() == Material.ENCHANTED_BOOK){
 
                 EnchantmentStorageMeta meta = (EnchantmentStorageMeta) item.getItemMeta();

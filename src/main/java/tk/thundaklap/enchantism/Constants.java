@@ -7,6 +7,7 @@ import org.bukkit.DyeColor;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.material.Wool;
 
 public class Constants {
     /***********************************
@@ -57,8 +58,8 @@ public class Constants {
         ITEM_BOOK = new ItemStack(Material.BOOK);
         ITEM_ENCH_BOOK = new ItemStack(Material.ENCHANTED_BOOK);
 
-        ITEM_WHITE_WOOL = new ItemStack(Material.WOOL, 1, DyeColor.WHITE.getWoolData());
-        ITEM_BLACK_WOOL = new ItemStack(Material.WOOL, 1, DyeColor.BLACK.getWoolData());
+        ITEM_WHITE_WOOL = new Wool(DyeColor.WHITE).toItemStack(1);
+        ITEM_BLACK_WOOL = new Wool(DyeColor.BLACK).toItemStack(1);
         ITEM_ENCH_TABLE = new ItemStack(Material.ENCHANTMENT_TABLE);
 
         ITEM_UNAVAILABLE_ENCHANT = new ItemStack(Material.BOOK);
@@ -66,12 +67,12 @@ public class Constants {
         meta.setDisplayName(ChatColor.GRAY.toString() + ChatColor.ITALIC.toString() + "Unavailable");
         ITEM_UNAVAILABLE_ENCHANT.setItemMeta(meta);
 
-        ITEM_PREV_PAGE = new ItemStack(Material.WOOL, 1, DyeColor.RED.getWoolData());
+        ITEM_PREV_PAGE = new Wool(DyeColor.RED).toItemStack(1);
         meta = ITEM_PREV_PAGE.getItemMeta();
         meta.setDisplayName(ChatColor.RED + "Previous Page");
         ITEM_PREV_PAGE.setItemMeta(meta);
 
-        ITEM_NEXT_PAGE = new ItemStack(Material.WOOL, 1, DyeColor.GREEN.getWoolData());
+        ITEM_NEXT_PAGE = new Wool(DyeColor.GREEN).toItemStack(1);
         meta = ITEM_NEXT_PAGE.getItemMeta();
         meta.setDisplayName(ChatColor.GREEN + "Next Page");
         ITEM_NEXT_PAGE.setItemMeta(meta);
