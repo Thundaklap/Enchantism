@@ -1,13 +1,19 @@
 package tk.thundaklap.enchantism;
 
+import java.util.ArrayList;
+import java.util.List;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Enchantism extends JavaPlugin {
 
     public EnchantismConfiguration configuration;
     private static Enchantism instance;
+    static List<EnchantInventory> openInventories;
 
     public void onEnable() {
+        
+        openInventories = new ArrayList<EnchantInventory>();
+        
         instance = this;
         saveDefaultConfig();
         configuration = new EnchantismConfiguration();
@@ -16,7 +22,11 @@ public class Enchantism extends JavaPlugin {
     }
 
     public void onDisable() {
-        // TODO: Place any custom disable code here.
+        for(EnchantInventory inv : openInventories){
+            inv.player.closeInventory();
+        }
+        
+        openInventories.clear();
     }
 
     public static Enchantism getInstance() {

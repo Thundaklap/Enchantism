@@ -1,7 +1,5 @@
 package tk.thundaklap.enchantism;
 
-import java.util.ArrayList;
-import java.util.List;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -16,7 +14,6 @@ import org.bukkit.inventory.ItemStack;
 
 public class EnchantismListener implements Listener {
 
-    private static List<EnchantInventory> inventories = new ArrayList<EnchantInventory>();
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onInventoryOpen(InventoryOpenEvent event) {
@@ -25,7 +22,7 @@ public class EnchantismListener implements Listener {
 
             Player thePlayer = (Player)event.getPlayer();
             
-            inventories.add(new EnchantInventory(thePlayer, thePlayer.getTargetBlock(null, 500).getLocation(), Enchantism.getInstance().configuration.requireBookshelves));
+            Enchantism.openInventories.add(new EnchantInventory(thePlayer, thePlayer.getTargetBlock(null, 500).getLocation(), Enchantism.getInstance().configuration.requireBookshelves));
 
         }
     }
@@ -34,7 +31,7 @@ public class EnchantismListener implements Listener {
     public void onInventoryClose(InventoryCloseEvent event) {
         EnchantInventory toRemove = null;
 
-        for (EnchantInventory inv : inventories) {
+        for (EnchantInventory inv : Enchantism.openInventories) {
             if (inv.player.equals(event.getPlayer())) {
                 toRemove = inv;
                 
@@ -51,13 +48,13 @@ public class EnchantismListener implements Listener {
         }
 
         if (toRemove != null) {
-            inventories.remove(toRemove);
+            Enchantism.openInventories.remove(toRemove);
         }
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onInventoryClick(InventoryClickEvent event) {
-        for (EnchantInventory inv : inventories) {
+        for (EnchantInventory inv : Enchantism.openInventories) {
             if (inv.player.equals(event.getWhoClicked())) {
                 inv.inventoryClicked(event);
                 break;
@@ -67,7 +64,7 @@ public class EnchantismListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onInventoryDrag(InventoryDragEvent event) {
-        for (EnchantInventory inv : inventories) {
+        for (EnchantInventory inv : Enchantism.openInventories) {
             if (inv.player.equals(event.getWhoClicked())) {
                 inv.inventoryDragged(event);
                 break;
